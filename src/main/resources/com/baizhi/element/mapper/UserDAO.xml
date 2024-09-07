@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baizhi.element.dao.UserDAO">
+
+    <select id="findAll" resultType="User">
+        select id,name,bir,sex,address from element_users
+    </select>
+
+    <insert id="save" parameterType="User" useGeneratedKeys="true" keyProperty="id">
+        insert into element_users values(#{id},#{name},#{bir},#{sex},#{address})
+    </insert>
+
+    <delete id="delete" parameterType="String">
+        delete from element_users where id=#{id}
+    </delete>
+
+    <update id="update" parameterType="User">
+        update element_users set name=#{name},bir=#{bir},sex=#{sex},address=#{address}
+        where id =#{id}
+    </update>
+</mapper>
